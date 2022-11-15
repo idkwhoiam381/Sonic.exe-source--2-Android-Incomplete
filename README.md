@@ -1,1 +1,3 @@
-#Um projeto que será finalizado em breve
+# Finalização em breve
+
+Omega kek
