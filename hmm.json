@@ -57,6 +57,12 @@
       "url": "https://github.com/ashea-code/faxe"
     },
     {
+      "name": "discord-rpc",
+      "type": "git",
+      "ref": "master",
+      "url": "https://github.com/idkwhoiam381/linc_discord-rpc"
+    },
+    {
       "name": "extension-webm",
       "type": "git",
       "ref": "master",
