@@ -3,8 +3,9 @@
 name: Android Build CI
 
 # Controls when the workflow will run
-on: [push, pull_request, workflow_dispatch]
-
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -15,28 +16,23 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - uses: krdlab/setup-haxe@v1
+      - name: goofy ahh
+        uses: actions/checkout@main
+
+      - name: Situp
+        uses: krdlab/setup-haxe@v1.2.0
         with:
           haxe-version: 4.2.3
 
-      - name: Cache haxelib path
-        uses: actions/cache@v2
-        with:
-          path: |
-            %HAXELIB_ROOT%
-          key: ${{ runner.os }}-android
-
-      - name: Setup Android SDK Tools
-        uses: android-actions/setup-android@v2.0.2
-
-      - name: Setup Java JDK
-        uses: actions/setup-java@v2.3.1
+      - name: JDK LOL
+        uses: actions/setup-java@main
         with:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '11'
 
-      - uses: nttld/setup-ndk@v1
+      - name: hehehehahahah NDK lol
+        uses: nttld/setup-ndk@main
+        id: setup-ndk
         with:
           ndk-version: r15c
 
@@ -66,8 +62,21 @@ jobs:
           haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit.git --quiet
           haxelib install actuate 
           haxelib list
-          haxelib run lime build android
-          
+
+      - name: Setup Lime
+        run: |
+          haxelib run lime setup -alias -y
+          haxelib run lime config ANDROID_SDK $ANDROID_HOME
+          haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_HOME
+          haxelib run lime config JAVA_HOME $JAVA_HOME
+          haxelib run lime config ANDROID_SETUP true
+          haxelib set lime 7.9.0 
+          haxelib set openfl 9.1.0 
+          haxelib list
+
+      - name: Compile
+        run: haxelib run lime build android -final
+
       - uses: actions/upload-artifact@v2
         with:
           name: Android Build
