@@ -1,6 +1,11 @@
 {
   "dependencies": [
     {
+      "name": "hxcpp",
+      "type": "haxelib",
+      "version": "4.2.1"
+    },
+    {
       "name": "lime",
       "type": "haxelib",
       "version": "7.9.0"
@@ -13,12 +18,12 @@
     {
       "name": "flixel",
       "type": "haxelib",
-      "version": "4.9.0"
+      "version": "4.11.0"
     },
     {
       "name": "flixel-addons",
       "type": "haxelib",
-      "version": "2.10.0"
+      "version": "2.11.0"
     },
     {
       "name": "flixel-tools",
@@ -28,7 +33,7 @@
     {
       "name": "flixel-ui",
       "type": "haxelib",
-      "version": "2.3.3"
+      "version": "2.4.0"
     },
     {
       "name": "hscript",
@@ -60,7 +65,7 @@
       "name": "discord-rpc",
       "type": "git",
       "ref": "master",
-      "url": "https://github.com/idkwhoiam381/linc_discord-rpc"
+      "url": "https://github.com/Aidan63/linc_discord-rpc"
     },
     {
       "name": "extension-webm",
